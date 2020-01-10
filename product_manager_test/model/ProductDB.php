@@ -60,7 +60,7 @@ class ProductDB
 
     public function update($id, $product)
     {
-        $sql = "INSERT INTO products(name, type, price, number, dayCreate, description) VALUES (?,?,?,?,?,?) WHERE id = ?";
+        $sql = "UPDATE products SET name = ?, type = ?, price = ?, number = ?, dayCreate = ?, description = ? WHERE id = ?";
         $stmt = $this->connect->prepare($sql);
         $name = $product->getName();
         $type = $product->getType();

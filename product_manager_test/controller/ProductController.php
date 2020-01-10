@@ -1,5 +1,6 @@
 <?php
 
+include_once "../model/Product.php";
 
 class ProductController
 {
@@ -53,7 +54,8 @@ class ProductController
             $product = $this->productDB->getProductById($id);
             include_once "view/edit.php";
         }
-        else {
+
+        if($_SERVER["REQUEST_METHOD"]=="POST"){
             $id = $_POST["id"];
             $name = $_POST["name"];
             $price = $_POST["price"];
@@ -65,6 +67,7 @@ class ProductController
             $product->setDayCreate($dayCreate);
             $product->setDescription($description);
             $this->productDB->update($id, $product);
+
             header("Location:index.php");
         }
     }
